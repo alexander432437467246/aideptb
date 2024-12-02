@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Je t'aide!</title>
+</head>
+<body>
+    <header>
+        <h1 class="help">Je t'aide!</h1>
+    </header>
+    <main>
+        <section>
+            <form id="contactForm" novalidate>
+                <label for="subject">Sujet:</label><br>
+                <input type="text" id="subject" name="subject" required><br><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="body" rows="5" cols="30" required></textarea><br><br>
+
+                <button type="submit" id="submitBtn">Envoyer</button>
+                <p id="error-message" style="color: red; display: none;">Veuillez remplir tous les champs!</p>
+            </form>
+        </section>
+        <a href="emails.html">Voir les emails envoyés</a> 
+    </main>
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var subject = document.getElementById("subject").value.trim();
+            var body = document.getElementById("message").value.trim();
+
+            if (!subject || !body) {
+                document.getElementById("error-message").style.display = "block";
+                return;
+            } else {
+                document.getElementById("error-message").style.display = "none";
+            }
+
+            storeEmail(subject, body);
+        });
+
+        function storeEmail(subject, body) {
+            let emails = JSON.parse(localStorage.getItem('emails')) || [];
+            emails.push({ subject, body, date: new Date() });
+            localStorage.setItem('emails', JSON.stringify(emails));
+        }
+    </script>
+</body>
+<footer>
+    No jodas con el systema de emails, pls grax :]
+</footer>
+</html>
