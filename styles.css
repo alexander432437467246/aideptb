@@ -1,0 +1,161 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: #dff0e7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.help {
+  margin: 0;
+  font-size: 3rem;
+  z-index: 1;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250%;
+  height: 250%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+main {
+  width: 85%;
+  max-width: 700px;
+  padding: 2.5rem;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-40px);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(0);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  margin-bottom: 0.7rem;
+  font-weight: bold;
+  text-align: left;
+  color: #555;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fafafa;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #e67e22;
+  outline: none;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.8);
+  background-color: #fff;
+}
+
+button {
+  background: linear-gradient(45deg, #e67e22, #d35400);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(45deg, #d35400, #e67e22);
+  transform: translateY(-4px);
+  opacity: 0.95;
+}
+
+button:active {
+  transform: translateY(2px);
+  opacity: 0.8;
+}
+
+#error-message {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  header {
+    padding: 2rem 0;
+  }
+
+  .help {
+    font-size: 2.2rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
