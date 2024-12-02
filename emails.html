@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emails Envoyés</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <h1 class="help">Emails Envoyés</h1>
+    </header>
+    <main>
+        <section id="emailsList">
+            </section>
+    </main>
+    <script>
+        function displayEmails() {
+            let emails = JSON.parse(localStorage.getItem('emails')) || [];
+            const emailsList = document.getElementById('emailsList');
+            emailsList.innerHTML = ''; 
 
+            if (emails.length === 0) {
+                emailsList.innerHTML = '<p>Aucun email envoyé.</p>';
+                return;
+            }
+
+            emails.forEach(email => {
+                const emailDiv = document.createElement('div');
+                emailDiv.innerHTML = `
+                    <h3>${email.subject}</h3>
+                    <p>${email.body}</p>
+                    <p class="date">${new Date(email.date).toLocaleString()}</p>
+                    <hr>
+                `;
+                emailsList.appendChild(emailDiv);
+            });
+        }
+
+        displayEmails();
+    </script>
+</body>
+</html>
